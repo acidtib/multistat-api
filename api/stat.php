@@ -226,12 +226,12 @@
 
 	//currently mining
 
-	function is_it_sha() {
+	function is_it_sha($btc) {
 		
-		if ($currency['btc']['hashrate']  == '0') {
-			$sha = 'n/a';
+		if ($currency['btc']['hashrate'] != 0) {
+			$sha = $btc;
 		} else {
-			$sha = $currency['btc']['hashrate'];
+			$sha = 'n/a';
 		}
 
 		return $sha;
@@ -239,7 +239,7 @@
 
 	$response['mining'] = array(
 		'scrypt' => 'doge', 
-		'sha-256' => is_it_sha(),
+		'sha-256' => is_it_sha($currency['btc']['hashrate']),
 	);
 
 	echo json_encode($response);
