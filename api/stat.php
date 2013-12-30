@@ -228,10 +228,10 @@
 
 	function is_it_sha() {
 		
-		if ($currency['btc']['hashrate'] != 0) {
-			$sha = $currency['btc']['hashrate'];
-		} else {
+		if ($currency['btc']['hashrate']  == '0') {
 			$sha = 'n/a';
+		} else {
+			$sha = $currency['btc']['hashrate'];
 		}
 
 		return $sha;
