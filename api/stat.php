@@ -222,6 +222,15 @@
 		
 	}
 
+
+
+	//currently mining
+
+	$response['mining'] = array(
+		'scrypt' => 'doge', 
+		'sha-256' => 'btc',
+	);
+
 	echo json_encode($response);
 
 
