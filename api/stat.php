@@ -229,9 +229,9 @@
 	function is_it_sha($btc, $frc, $ppc, $trc, $zet) {
 		
 		if ($btc != 0) {
-			$sha = 'n/a';
-		} else {
 			$sha = $btc;
+		} else {
+			$sha = 'n/a';
 		}
 
 		return $sha;
