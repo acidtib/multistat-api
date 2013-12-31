@@ -23,6 +23,8 @@
 
 	$currency = $result['currency'];
 
+	$worker = $result['workers'];
+
 
 	if (($currency['arg']['confirmed_rewards'] != 0)) {
 
@@ -293,6 +295,24 @@
 		'scrypt' => is_it_scrypt($currency['ltc']['hashrate'], $currency['ftc']['hashrate'], $currency['mnc']['hashrate'], $currency['wdc']['hashrate'], $currency['dgc']['hashrate'], $currency['nvc']['hashrate'], $currency['lky']['hashrate'], $currency['arg']['hashrate'], $currency['pxc']['hashrate'], $currency['mec']['hashrate'], $currency['cap']['hashrate'], $currency['cgb']['hashrate'], $currency['doge']['hashrate'], $currency['dmd']['hashrate'], $currency['tips']['hashrate'], $currency['gdc']['hashrate'], $currency['moon']['hashrate']), 
 		'sha_256' => is_it_sha($currency['btc']['hashrate'], $currency['frc']['hashrate'], $currency['ppc']['hashrate'], $currency['trc']['hashrate'], $currency['zet']['hashrate']),
 	);
+
+
+
+	//ok lets show the active workers
+
+	foreach ($worker['trc'] as $work => $hash) {
+
+		if ($hash['hashrate'] != 0) {
+			$response['workers']['trc'][] = array(
+				'worker' => $work, 
+				'hashrate' => $hash['hashrate']
+			);
+		}
+		
+
+	}
+
+
 
 	echo json_encode($response);
 
