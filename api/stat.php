@@ -245,8 +245,52 @@
 		return $sha;
 	}
 
+	function is_it_scrypt($ltc, $ftc, $mnc, $wdc, $dgc, $nvc, $lky, $arg, $pxc, $mec, $cap, $cgb, $doge, $dmd, $tips, $gdc, $moon) {
+		
+		if ($ltc != 0) {
+			$scrypt = 'LTC';
+		} elseif ($ftc != 0) {
+			$scrypt = 'FTC';
+		} elseif ($mnc != 0) {
+			$scrypt = 'MNC';
+		} elseif ($wdc != 0) {
+			$scrypt = 'WDC';
+		} elseif ($dgc != 0) {
+			$scrypt = 'DGC';
+		} elseif ($nvc != 0) {
+			$scrypt = 'NVC';
+		} elseif ($lky != 0) {
+			$scrypt = 'LKY';
+		} elseif ($arg != 0) {
+			$scrypt = 'ARG';
+		} elseif ($pxc != 0) {
+			$scrypt = 'PXC';
+		} elseif ($mec != 0) {
+			$scrypt = 'MEC';
+		} elseif ($cap != 0) {
+			$scrypt = 'CAP';
+		} elseif ($cgb != 0) {
+			$scrypt = 'CGB';
+		} elseif ($doge != 0) {
+			$scrypt = 'DOGE';
+		} elseif ($dmd != 0) {
+			$scrypt = 'DMD';
+		} elseif ($tips != 0) {
+			$scrypt = 'TIPS';
+		} elseif ($gdc != 0) {
+			$scrypt = 'GDC';
+		} elseif ($moon != 0) {
+			$scrypt = 'MOON';
+		} else {
+			$scrypt = 'n/a';
+		}
+
+		return $scrypt;
+
+	}
+
 	$response['mining'] = array(
-		'scrypt' => 'doge', 
+		'scrypt' => is_it_scrypt($currency['ltc']['hashrate'], $currency['ftc']['hashrate'], $currency['mnc']['hashrate'], $currency['wdc']['hashrate'], $currency['dgc']['hashrate'], $currency['nvc']['hashrate'], $currency['lky']['hashrate'], $currency['arg']['hashrate'], $currency['pxc']['hashrate'], $currency['mec']['hashrate'], $currency['cap']['hashrate'], $currency['cgb']['hashrate'], $currency['doge']['hashrate'], $currency['dmd']['hashrate'], $currency['tips']['hashrate'], $currency['gdc']['hashrate'], $currency['moon']['hashrate']), 
 		'sha-256' => is_it_sha($currency['btc']['hashrate'], $currency['frc']['hashrate'], $currency['ppc']['hashrate'], $currency['trc']['hashrate'], $currency['zet']['hashrate']),
 	);
 
