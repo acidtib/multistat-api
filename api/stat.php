@@ -234,6 +234,30 @@
 			$sha = 'n/a';
 		}
 
+		if ($frc != 0) {
+			$sha = $frc;
+		} else {
+			$sha = 'n/a';
+		}
+
+		if ($ppc != 0) {
+			$sha = $ppc;
+		} else {
+			$sha = 'n/a';
+		}
+
+		if ($trc != 0) {
+			$sha = $trc;
+		} else {
+			$sha = 'n/a';
+		}
+
+		if ($zet != 0) {
+			$sha = $zet;
+		} else {
+			$sha = 'n/a';
+		}
+
 		return $sha;
 	}
 
