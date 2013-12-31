@@ -226,7 +226,7 @@
 
 	//currently mining
 
-	function is_it_sha($btc) {
+	function is_it_sha($btc, $frc, $ppc, $trc, $zet) {
 		
 		if ($currency['btc']['hashrate'] == '0') {
 			$sha = 'n/a';
@@ -234,12 +234,36 @@
 			$sha = $btc;
 		}
 
+		if ($currency['frc']['hashrate'] == '0') {
+			$sha = 'n/a';
+		} else {
+			$sha = $frc;
+		}
+
+		if ($currency['ppc']['hashrate'] == '0') {
+			$sha = 'n/a';
+		} else {
+			$sha = $ppc;
+		}
+
+		if ($currency['trc']['hashrate'] == '0') {
+			$sha = 'n/a';
+		} else {
+			$sha = $trc;
+		}
+
+		if ($currency['zet']['hashrate'] == '0') {
+			$sha = 'n/a';
+		} else {
+			$sha = $zet;
+		}
+
 		return $sha;
 	}
 
 	$response['mining'] = array(
 		'scrypt' => 'doge', 
-		'sha-256' => is_it_sha($currency['btc']['hashrate']),
+		'sha-256' => is_it_sha($currency['btc']['hashrate'], $currency['frc']['hashrate'], $currency['ppc']['hashrate'], $currency['trc']['hashrate'], $currency['zet']['hashrate']),
 	);
 
 	echo json_encode($response);
