@@ -23,8 +23,9 @@
 
 	$currency = $result['currency'];
 
-	$worker = $result['workers'];
+	$workers = $result['workers'];
 
+	// ill clean this fuck fest later
 
 	if (($currency['arg']['confirmed_rewards'] != 0)) {
 
@@ -300,16 +301,17 @@
 
 	//ok lets show the active workers
 
-	foreach ($worker['trc'] as $work => $hash) {
+	foreach ($workers as $worker => $work_d) {
 
-		if ($hash['hashrate'] != 0) {
-			$response['workers']['trc'][] = array(
-				'worker' => $work, 
-				'hashrate' => $hash['hashrate']
-			);
+		foreach ($work_d as $work => $hash) {
+			if ($hash['hashrate'] != 0) {
+				$response['workers'][$worker][] = array(
+					'worker' => $work, 
+					'hashrate' => $hash['hashrate']
+				);
+			}
 		}
 		
-
 	}
 
 
