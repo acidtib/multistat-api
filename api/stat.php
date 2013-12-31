@@ -229,31 +229,15 @@
 	function is_it_sha($btc, $frc, $ppc, $trc, $zet) {
 		
 		if ($btc != 0) {
-			$sha = $btc;
-		} else {
-			$sha = 'n/a';
-		}
-
-		if ($frc != 0) {
-			$sha = $frc;
-		} else {
-			$sha = 'n/a';
-		}
-
-		if ($ppc != 0) {
-			$sha = $ppc;
-		} else {
-			$sha = 'n/a';
-		}
-
-		if ($trc != 0) {
-			$sha = $trc;
-		} else {
-			$sha = 'n/a';
-		}
-
-		if ($zet != 0) {
-			$sha = $zet;
+			$sha = 'BTC';
+		} elseif ($frc != 0) {
+			$sha = 'FRC';
+		} elseif ($ppc != 0) {
+			$sha = 'PPC';
+		} elseif ($trc != 0) {
+			$sha = 'TRC';
+		} elseif ($zet != 0) {
+			$sha = 'ZET';
 		} else {
 			$sha = 'n/a';
 		}
