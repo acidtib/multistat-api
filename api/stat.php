@@ -305,7 +305,8 @@
 
 		foreach ($work_d as $work => $hash) {
 			if ($hash['hashrate'] != 0) {
-				$response['workers'][$worker][] = array(
+				$response['workers'][] = array(
+					'coin' => $worker,
 					'worker' => $work, 
 					'hashrate' => $hash['hashrate']
 				);
