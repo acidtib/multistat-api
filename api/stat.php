@@ -291,7 +291,7 @@
 
 	$response['mining'] = array(
 		'scrypt' => is_it_scrypt($currency['ltc']['hashrate'], $currency['ftc']['hashrate'], $currency['mnc']['hashrate'], $currency['wdc']['hashrate'], $currency['dgc']['hashrate'], $currency['nvc']['hashrate'], $currency['lky']['hashrate'], $currency['arg']['hashrate'], $currency['pxc']['hashrate'], $currency['mec']['hashrate'], $currency['cap']['hashrate'], $currency['cgb']['hashrate'], $currency['doge']['hashrate'], $currency['dmd']['hashrate'], $currency['tips']['hashrate'], $currency['gdc']['hashrate'], $currency['moon']['hashrate']), 
-		'sha-256' => is_it_sha($currency['btc']['hashrate'], $currency['frc']['hashrate'], $currency['ppc']['hashrate'], $currency['trc']['hashrate'], $currency['zet']['hashrate']),
+		'sha_256' => is_it_sha($currency['btc']['hashrate'], $currency['frc']['hashrate'], $currency['ppc']['hashrate'], $currency['trc']['hashrate'], $currency['zet']['hashrate']),
 	);
 
 	echo json_encode($response);
