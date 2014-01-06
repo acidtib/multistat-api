@@ -28,21 +28,6 @@
 	$workers = $result['workers'];
 
 
-	// do we have a balance
-
-	foreach ($balances as $currencys => $balance_d) {
-		
-		if ($balance_d['confirmed_rewards'] != 0) {
-			$response['currency'][] = array(
-		 		'currency' => $currencys,
-				'confirmed_rewards' => $balance_d['confirmed_rewards']
-			);
-		}
-
-	}
-
-
-
 	//currently mining
 
 	function is_it_sha($btc, $frc, $ppc, $trc, $zet) {
@@ -108,29 +93,58 @@
 
 	}
 
-	$response['mining'] = array(
-		'scrypt' => is_it_scrypt($currency['ltc']['hashrate'], $currency['ftc']['hashrate'], $currency['mnc']['hashrate'], $currency['wdc']['hashrate'], $currency['dgc']['hashrate'], $currency['nvc']['hashrate'], $currency['lky']['hashrate'], $currency['arg']['hashrate'], $currency['pxc']['hashrate'], $currency['mec']['hashrate'], $currency['cap']['hashrate'], $currency['cgb']['hashrate'], $currency['doge']['hashrate'], $currency['dmd']['hashrate'], $currency['tips']['hashrate'], $currency['gdc']['hashrate'], $currency['moon']['hashrate']), 
-		'sha_256' => is_it_sha($currency['btc']['hashrate'], $currency['frc']['hashrate'], $currency['ppc']['hashrate'], $currency['trc']['hashrate'], $currency['zet']['hashrate']),
-	);
 
 
+	// check if we have something return
+	
+	if ($currency) {
 
-	//ok lets show the active workers
-
-	foreach ($workers as $worker => $work_d) {
-
-		foreach ($work_d as $work => $hash) {
-			if ($hash['hashrate'] != 0) {
-				$response['workers'][] = array(
-					'coin' => $worker,
-					'worker' => $work, 
-					'hashrate' => $hash['hashrate']
+		$response['status'] = array(
+			'what' => '200'
+		);
+		
+		// do we have a balance
+		foreach ($balances as $currencys => $balance_d) {
+			
+			if ($balance_d['confirmed_rewards'] != 0) {
+				$response['currency'][] = array(
+			 		'currency' => $currencys,
+					'confirmed_rewards' => $balance_d['confirmed_rewards']
 				);
 			}
-		}
-		
-	}
 
+		}
+
+		// what are we mining
+		$response['mining'] = array(
+			'scrypt' => is_it_scrypt($currency['ltc']['hashrate'], $currency['ftc']['hashrate'], $currency['mnc']['hashrate'], $currency['wdc']['hashrate'], $currency['dgc']['hashrate'], $currency['nvc']['hashrate'], $currency['lky']['hashrate'], $currency['arg']['hashrate'], $currency['pxc']['hashrate'], $currency['mec']['hashrate'], $currency['cap']['hashrate'], $currency['cgb']['hashrate'], $currency['doge']['hashrate'], $currency['dmd']['hashrate'], $currency['tips']['hashrate'], $currency['gdc']['hashrate'], $currency['moon']['hashrate']), 
+			'sha_256' => is_it_sha($currency['btc']['hashrate'], $currency['frc']['hashrate'], $currency['ppc']['hashrate'], $currency['trc']['hashrate'], $currency['zet']['hashrate']),
+		);
+
+
+		//ok lets show the active workers
+
+		foreach ($workers as $worker => $work_d) {
+
+			foreach ($work_d as $work => $hash) {
+				if ($hash['hashrate'] != 0) {
+					$response['workers'][] = array(
+						'coin' => $worker,
+						'worker' => $work, 
+						'hashrate' => $hash['hashrate']
+					);
+				}
+			}
+			
+		}
+
+	} else {
+		
+		$response['status'] = array(
+			'what' => '500'
+		);
+
+	}
 
 
 	echo json_encode($response);
