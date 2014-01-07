@@ -55,7 +55,7 @@
 					<h1>MultiStat</h1>
 				</div><!-- End Logo -->
 				<div class="intro-text eleven columns"><!-- Intro -->
-					<h1>Take Multipool on the road</h1>
+					<h1>Take Multipool on the road.</h1>
 					
 					<div style="overflow: hidden;">
 						<a href="#" style="float: left;">
@@ -64,7 +64,7 @@
 							</div>
 						</a>
 
-						<a href="#" style="float: left; margin-left: 20px;">
+						<a href="#" style="display: none; float: left; margin-left: 20px;">
 							<div class="appstore-button border-5">
 							 	<i class="fa fa-android fa-4x" style="padding-top: 7px; top: 4px; font-size: 45px; margin: 0px 0px 0px -6px;"></i><span style="margin-left: 2px;">Get it on the <br><strong>Play Store</strong></span>
 							</div>
@@ -92,7 +92,7 @@
 						</div>
 						<div class="info seven columns padding-10">
 							<h3>Balance</h3>
-							<p>Fruitcake lemon drops macaroon tiramisu candy bonbon tootsie roll gingerbread cake. Topping soufflé cheesecake ice cream. Topping powder jelly beans toffee.</p>
+							<p>Take a quick glance at your balances without having to turn on your laptop.</p>
 						</div>
 						<div class="arrow border-5"></div>
 					</div>
@@ -102,7 +102,7 @@
 						</div>
 						<div class="info seven columns padding-10">
 							<h3>Transactions</h3>
-							<p>Fruitcake lemon drops macaroon tiramisu candy bonbon tootsie roll gingerbread cake. Topping soufflé cheesecake ice cream. Topping powder jelly beans toffee.</p>
+							<p>View your transantion history..</p>
 						</div>
 						<div class="arrow border-5"></div>
 					</div>
