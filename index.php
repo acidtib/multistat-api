@@ -78,7 +78,7 @@
 				<div class="left eleven columns"><!-- Left -->
 					<div class="info-box first-box ten columns"><!-- White Hover Box -->
 						<div class="icon two columns">
-							<i class="fa fa-cogs fa-4x"></i>
+							<i class="fa fa-cogs fa-4x" style="margin-top: 28%;"></i>
 						</div>
 						<div class="info seven columns padding-10">
 							<h3>Keep Tabs On Your Workers</h3>
