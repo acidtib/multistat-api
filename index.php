@@ -82,13 +82,13 @@
 						</div>
 						<div class="info seven columns padding-10">
 							<h3>Keep Tabs On Your Workers</h3>
-							<p>Fruitcake lemon drops macaroon tiramisu candy bonbon tootsie roll gingerbread cake. Topping soufflé cheesecake ice cream. Topping powder jelly beans toffee.</p>
+							<p>Monitor your workers and what coin they are mining.</p>
 						</div>
 						<div class="arrow border-5"></div>
 					</div>
 					<div class="info-box second-box ten columns">
 						<div class="icon two columns">
-							<i class="fa fa-bitcoin fa-4x"></i>
+							<i class="fa fa-bitcoin fa-4x" style="margin-top: 37%;"></i>
 						</div>
 						<div class="info seven columns padding-10">
 							<h3>Balance</h3>
@@ -98,7 +98,7 @@
 					</div>
 					<div class="info-box third-box ten columns">
 						<div class="icon two columns">
-							<i class="fa fa-money fa-4x"></i>
+							<i class="fa fa-money fa-4x" style="margin-top: 30%;"></i>
 						</div>
 						<div class="info seven columns padding-10">
 							<h3>Transactions</h3>
