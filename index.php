@@ -102,7 +102,7 @@
 						</div>
 						<div class="info seven columns padding-10">
 							<h3>Transactions</h3>
-							<p>View your transantion history..</p>
+							<p>View your transantion history.</p>
 						</div>
 						<div class="arrow border-5"></div>
 					</div>
@@ -152,7 +152,7 @@
 			<div class="social four columns"><!-- Social Buttons -->
 				<ul>
 					<li class="border-5"><a href="#"><i class="fa fa-facebook"></i></a></li>
-					<li class="border-5"><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li class="border-5"><a href="https://twitter.com/multistatapp"><i class="fa fa-twitter"></i></a></li>
 
 				</ul>
 			</div>
