@@ -5,7 +5,8 @@
 	
 	date_default_timezone_set('America/New_York');
 
-	$url = 'https://www.multipool.us/api2.php?api_key='.$_GET['api_key'].'';
+	//$url = 'https://www.multipool.us/api2.php?api_key='.$_GET['api_key'].'';
+	$url = 'http://api.multipool.us/api2.php?api_key='.$_GET['api_key'].'';
 	$cmd = array();
 	$data = array('json' => json_encode($cmd));
  
