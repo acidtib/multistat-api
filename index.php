@@ -64,7 +64,7 @@
 							</div>
 						</a>
 
-						<a href="#" style="display: none; float: left; margin-left: 20px;">
+						<a href="https://play.google.com/store/apps/details?id=com.ianalyst.multistat" style="float: left; margin-left: 20px;">
 							<div class="appstore-button border-5">
 							 	<i class="fa fa-android fa-4x" style="padding-top: 7px; top: 4px; font-size: 45px; margin: 0px 0px 0px -6px;"></i><span style="margin-left: 2px;">Get it on the <br><strong>Play Store</strong></span>
 							</div>
