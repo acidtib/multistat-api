@@ -579,11 +579,11 @@ footer h3{
 			width:inherit;
 		}
 		#info .info-box .icon i{
-			margin-top:20px;
+			margin-top:20px!important;
 		}
 		#info .info-box .info{
 			text-align: center;
-			width:auto;
+			width: 93%;
 			padding:10px;
 		}
 		#info .arrow{
@@ -661,6 +661,22 @@ footer h3{
 		#mail-vertical .email-text {
 		width: auto;
 		margin-top: -22px;
+		}
+
+		.onApple {
+			width: 190px;
+			margin: 0 auto;
+			float: none!important;
+		}
+
+		.onAndroid {
+			width: 190px;
+			margin: 0 auto;
+			float: none!important;
+		}
+
+		.onAndroid div i {
+			margin: 0px 0px 0px -19px!important;
 		}
 		
 
