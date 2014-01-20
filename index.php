@@ -121,25 +121,19 @@
 			</div>
 		</section><!-- End Info -->
 	
-	<section style="display: none;" id="testimonials"><!-- Testimonials -->
+	<section id="testimonials"><!-- Testimonials -->
 		<div class="container">
-				<ul class="bxslider testimonialsslider">
-					<li>
-					<div class="image three columns">
-						<img src="http://placehold.it/120x120">
-					</div>
-					<div class="thirteen columns">
-						<blockquote>"Applicake unerdwear marshmallow jelly beans cookie biscuit unerdwear chupa chups sweet roll. Chocolate cake topping chocolate bar tart topping sweet roll. Powder chupa chups icing biscuit."<cite>Johnny Does</cite></blockquote> 
-					</div></li>
-					<li>
-					<div class="image three columns">
-						<img src="http://placehold.it/120x120">
-					</div>
-					<div class="thirteen columns">
-						<blockquote>"Applicake unerdwear marshmallow jelly beans cookie biscuit unerdwear chupa chups sweet roll. Chocolate cake topping chocolate bar tart topping sweet roll. Powder chupa chups icing biscuit."<cite>Do Johnson</cite></blockquote> 
-					</div>
-					</li>
+
+			<h3>Why don't you buy me a beer.</h3>
+			
+			<div class="seven columns">
+				left
 			</div>
+
+			<div class="nine columns">
+				right
+			</div>
+
 		</div>
 	</section><!-- End Testimonials -->
 	
