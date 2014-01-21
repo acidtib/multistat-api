@@ -126,12 +126,42 @@
 
 			<h3>Want to help Multistat stay open and free.</h3>
 			
-			<div class="seven columns">
-				left
+			<div class="seven columns" style="margin: 10px 0px 0px 0px;">
+				<script src="http://multistat.yovu.co/donate/coin.js"></script>
+				<script>
+					CoinWidgetCom.go({
+						wallet_address: "14MNwve6t82raJFRQEbYWEdtdHHSuv4HKG"
+						, currency: "bitcoin"
+						, counter: "count"
+						, alignment: "al"
+						, qrcode: true
+						, auto_show: false
+						, lbl_button: "Bitcoin Support"
+						, lbl_address: "Bitcoin Support Address:"
+						, lbl_count: "Donations"
+						, lbl_amount: "BTC"
+					});
+				</script>
 			</div>
 
-			<div class="nine columns">
-				right
+			<div class="nine columns" style="margin: 10px 0px 0px 0px;">
+				<strong>By supporting Multistat you will help in the following ways:</strong>
+
+				<ul style="margin: 7px 0px 0px 12px;">
+					<li>- Keep Mulstistat free on the app store</li>
+					<li>- Scale the api servers</li>
+					<li>- Bounty for future features</li>
+				</ul>
+
+
+				<strong>Multistat is Open Source:</strong>
+
+				<ul style="margin: 7px 0px 0px 12px;">
+					<li>- multistat-api - <a href="https://github.com/drkyro/multistat-api" style="color: #1C9DF8;">github repo</a></li>
+					<li>- multistat - <a href="https://github.com/drkyro/multistat" style="color: #1C9DF8;">github repo</a></li>
+					<li>- multipool-bot - <a href="https://github.com/drkyro/multipool-bot" style="color: #1C9DF8;">github repo</a></li>
+				</ul>
+
 			</div>
 
 		</div>
@@ -160,21 +190,7 @@
 	<script src="assets/js/jquery.slides.js"></script>
 	<script src="assets/js/retina-1.1.0.min.js"></script>
 	
-	<script src="http://multistat.yovu.co/donate/coin.js"></script>
-<script>
-CoinWidgetCom.go({
-	wallet_address: "122MeuyZpYz4GSHNrF98e6dnQCXZfHJeGS"
-	, currency: "bitcoin"
-	, counter: "count"
-	, alignment: "bl"
-	, qrcode: true
-	, auto_show: false
-	, lbl_button: "Donate"
-	, lbl_address: "My Bitcoin Address:"
-	, lbl_count: "donations"
-	, lbl_amount: "BTC"
-});
-</script>
+
 
 <!-- End Document
 ================================================== -->
