@@ -133,13 +133,28 @@
 						wallet_address: "14MNwve6t82raJFRQEbYWEdtdHHSuv4HKG"
 						, currency: "bitcoin"
 						, counter: "count"
-						, alignment: "al"
+						, alignment: "bl"
 						, qrcode: true
 						, auto_show: false
 						, lbl_button: "Bitcoin Support"
 						, lbl_address: "Bitcoin Support Address:"
 						, lbl_count: "Donations"
 						, lbl_amount: "BTC"
+					});
+				</script>
+
+				<script>
+					CoinWidgetCom.go({
+						wallet_address: "Ld5cJ6CfbBtHza2QT6Y2sXuBCketD85yAM"
+						, currency: "litecoin"
+						, counter: "count"
+						, alignment: "bl"
+						, qrcode: true
+						, auto_show: false
+						, lbl_button: "Litecoin Support"
+						, lbl_address: "Litecoin Support Address:"
+						, lbl_count: "Donations"
+						, lbl_amount: "LTC"
 					});
 				</script>
 			</div>
