@@ -124,7 +124,7 @@
 	<section id="testimonials"><!-- Testimonials -->
 		<div class="container">
 
-			<h3>Why don't you buy me a beer.</h3>
+			<h3>Want to help Multistat stay open and free.</h3>
 			
 			<div class="seven columns">
 				left
@@ -159,6 +159,22 @@
 	<script type="text/javascript" src='assets/js/jquery.bxslider.js'></script>
 	<script src="assets/js/jquery.slides.js"></script>
 	<script src="assets/js/retina-1.1.0.min.js"></script>
+	
+	<script src="http://multistat.yovu.co/donate/coin.js"></script>
+<script>
+CoinWidgetCom.go({
+	wallet_address: "122MeuyZpYz4GSHNrF98e6dnQCXZfHJeGS"
+	, currency: "bitcoin"
+	, counter: "count"
+	, alignment: "bl"
+	, qrcode: true
+	, auto_show: false
+	, lbl_button: "Donate"
+	, lbl_address: "My Bitcoin Address:"
+	, lbl_count: "donations"
+	, lbl_amount: "BTC"
+});
+</script>
 
 <!-- End Document
 ================================================== -->
