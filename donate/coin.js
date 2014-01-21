@@ -78,7 +78,7 @@ var CoinWidgetCom = {
 	}
 	, init: function(){
 		CoinWidgetCom.loader.stylesheet();
-		$(window).resize(function(){
+		jQuery(window).resize(function(){
 			CoinWidgetCom.window_resize();
 		});
 		setTimeout(function(){
@@ -89,13 +89,13 @@ var CoinWidgetCom = {
 		},800);		
 	}
 	, build: function(){
-		$containers = $("span[data-coinwidget-instance]");
+		$containers = jQuery("span[data-coinwidget-instance]");
 		$containers.each(function(i,v){
-			$config = CoinWidgetCom.config[$(this).attr('data-coinwidget-instance')];
+			$config = CoinWidgetCom.config[jQuery(this).attr('data-coinwidget-instance')];
 			$counter = $config.counter == 'hide'?'':('<span><img src="'+CoinWidgetCom.source+'icon_loading.gif" width="13" height="13" /></span>');
 			$button = '<a class="COINWIDGETCOM_BUTTON_'+$config.currency.toUpperCase()+'" href="#"><img src="'+CoinWidgetCom.source+'icon_'+$config.currency+'.png" /><span>'+$config.lbl_button+'</span></a>'+$counter;
-			$(this).html($button);
-			$(this).find('> a').unbind('click').click(function(e){
+			jQuery(this).html($button);
+			jQuery(this).find('> a').unbind('click').click(function(e){
 				e.preventDefault();
 				CoinWidgetCom.show(this);
 			});
@@ -103,7 +103,7 @@ var CoinWidgetCom = {
 		CoinWidgetCom.counters();
 	}
 	, window_resize: function(){
-		$.each(CoinWidgetCom.config,function(i,v){
+		jQuery.each(CoinWidgetCom.config,function(i,v){
 			CoinWidgetCom.window_position(i);
 		});
 	}
@@ -113,53 +113,53 @@ var CoinWidgetCom = {
 
 			obj = "span[data-coinwidget-instance='"+$instance+"'] > a";
 			/* 	to make alignment relative to the full width of the container instead 
-			of just the button change this occurence of $(obj) to $(obj).parent(), 
+			of just the button change this occurence of jQuery(obj) to jQuery(obj).parent(), 
 			do the same for the occurences within the switch statement. */
-			$pos = $(obj).offset(); 
+			$pos = jQuery(obj).offset(); 
 			switch ($config.alignment) {
 				default:
 				case 'al': /* above left */
-					$top = $pos.top - $(coin_window).outerHeight() - 10;
+					$top = $pos.top - jQuery(coin_window).outerHeight() - 10;
 					$left = $pos.left; 
 					break;
 				case 'ac': /* above center */
-					$top = $pos.top - $(coin_window).outerHeight() - 10;
-					$left = $pos.left + ($(obj).outerWidth()/2) - ($(coin_window).outerWidth()/2);
+					$top = $pos.top - jQuery(coin_window).outerHeight() - 10;
+					$left = $pos.left + (jQuery(obj).outerWidth()/2) - (jQuery(coin_window).outerWidth()/2);
 					break;
 				case 'ar': /* above right */
-					$top = $pos.top - $(coin_window).outerHeight() - 10;
-					$left = $pos.left + $(obj).outerWidth() - $(coin_window).outerWidth();
+					$top = $pos.top - jQuery(coin_window).outerHeight() - 10;
+					$left = $pos.left + jQuery(obj).outerWidth() - jQuery(coin_window).outerWidth();
 					break;
 				case 'bl': /* bottom left */
-					$top = $pos.top + $(obj).outerHeight() + 10;
+					$top = $pos.top + jQuery(obj).outerHeight() + 10;
 					$left = $pos.left; 
 					break;
 				case 'bc': /* bottom center */
-					$top = $pos.top + $(obj).outerHeight() + 10;
-					$left = $pos.left + ($(obj).outerWidth()/2) - ($(coin_window).outerWidth()/2);
+					$top = $pos.top + jQuery(obj).outerHeight() + 10;
+					$left = $pos.left + (jQuery(obj).outerWidth()/2) - (jQuery(coin_window).outerWidth()/2);
 					break;
 				case 'br': /* bottom right */
-					$top = $pos.top + $(obj).outerHeight() + 10;
-					$left = $pos.left + $(obj).outerWidth() - $(coin_window).outerWidth();
+					$top = $pos.top + jQuery(obj).outerHeight() + 10;
+					$left = $pos.left + jQuery(obj).outerWidth() - jQuery(coin_window).outerWidth();
 					break;
 			}
-		if ($(coin_window).is(':visible')) {
-			$(coin_window).stop().animate({'z-index':99999999999,'top':$top,'left':$left},150);
+		if (jQuery(coin_window).is(':visible')) {
+			jQuery(coin_window).stop().animate({'z-index':99999999999,'top':$top,'left':$left},150);
 		} else {
-			$(coin_window).stop().css({'z-index':99999999998,'top':$top,'left':$left});
+			jQuery(coin_window).stop().css({'z-index':99999999998,'top':$top,'left':$left});
 		}
 	}
 	, counter: []
 	, counters: function(){
 		$addresses = [];
-		$.each(CoinWidgetCom.config,function(i,v){
+		jQuery.each(CoinWidgetCom.config,function(i,v){
 			$instance = i;
 			$config = v;
 			if ($config.counter != 'hide')
 				$addresses.push($instance+'_'+$config.currency+'_'+$config.wallet_address);
 			else {
 				if ($config.auto_show) 
-					$("span[data-coinwidget-instance='"+i+"']").find('> a').click();
+					jQuery("span[data-coinwidget-instance='"+i+"']").find('> a').click();
 			}
 		});
 		if ($addresses.length) {
@@ -169,16 +169,16 @@ var CoinWidgetCom = {
 				, callback: function(){
 					if (typeof COINWIDGETCOM_DATA == 'object') {
 						CoinWidgetCom.counter = COINWIDGETCOM_DATA;
-						$.each(CoinWidgetCom.counter,function(i,v){
+						jQuery.each(CoinWidgetCom.counter,function(i,v){
 							$config = CoinWidgetCom.config[i];
 							if (!v.count || v == null) v = {count:0,amount:0};
-							$("span[data-coinwidget-instance='"+i+"']").find('> span').html($config.counter=='count'?v.count:(v.amount.toFixed($config.decimals)+' '+$config.lbl_amount));
+							jQuery("span[data-coinwidget-instance='"+i+"']").find('> span').html($config.counter=='count'?v.count:(v.amount.toFixed($config.decimals)+' '+$config.lbl_amount));
 							if ($config.auto_show) {
-								$("span[data-coinwidget-instance='"+i+"']").find('> a').click();
+								jQuery("span[data-coinwidget-instance='"+i+"']").find('> a').click();
 							}
 						});
 					}
-					if ($("span[data-coinwidget-instance] > span img").length > 0) {
+					if (jQuery("span[data-coinwidget-instance] > span img").length > 0) {
 						setTimeout(function(){CoinWidgetCom.counters();},2500);
 					}
 				}
@@ -186,11 +186,11 @@ var CoinWidgetCom = {
 		}
 	}
 	, show: function(obj) {
-		$instance = $(obj).parent().attr('data-coinwidget-instance');
+		$instance = jQuery(obj).parent().attr('data-coinwidget-instance');
 		$config = CoinWidgetCom.config[$instance];
 		coin_window = "#COINWIDGETCOM_WINDOW_"+$instance;
-		$(".COINWIDGETCOM_WINDOW").css({'z-index':99999999998});
-		if (!$(coin_window).length) {
+		jQuery(".COINWIDGETCOM_WINDOW").css({'z-index':99999999998});
+		if (!jQuery(coin_window).length) {
 
 			$sel = !navigator.userAgent.match(/iPhone/i)?'onclick="this.select();"':'onclick="prompt(\'Select all and copy:\',\''+$config.wallet_address+'\');"';
 
@@ -212,18 +212,18 @@ var CoinWidgetCom = {
 				  	   + '<img class="COINWIDGETCOM_QRCODE_LARGE" src="'+CoinWidgetCom.source+'icon_qrcode.png" width="111" height="111" />'
 				  	   ;
 			}
-			var $div = $('<div></div>');
-			$('body').append($div);
+			var $div = jQuery('<div></div>');
+			jQuery('body').append($div);
 			$div.attr({
 				'id': 'COINWIDGETCOM_WINDOW_'+$instance
 			}).addClass('COINWIDGETCOM_WINDOW COINWIDGETCOM_WINDOW_'+$config.currency.toUpperCase()+' COINWIDGETCOM_WINDOW_'+$config.alignment.toUpperCase()).html($html).unbind('click').bind('click',function(){
-				$(".COINWIDGETCOM_WINDOW").css({'z-index':99999999998});
-				$(this).css({'z-index':99999999999});
+				jQuery(".COINWIDGETCOM_WINDOW").css({'z-index':99999999998});
+				jQuery(this).css({'z-index':99999999999});
 			});
 			if ($config.qrcode) {
-				$(coin_window).find('.COINWIDGETCOM_QRCODE').bind('mouseenter click',function(){
-					$config = CoinWidgetCom.config[$(this).attr('data-coinwidget-instance')];
-					$lrg = $(this).parent().find('.COINWIDGETCOM_QRCODE_LARGE');
+				jQuery(coin_window).find('.COINWIDGETCOM_QRCODE').bind('mouseenter click',function(){
+					$config = CoinWidgetCom.config[jQuery(this).attr('data-coinwidget-instance')];
+					$lrg = jQuery(this).parent().find('.COINWIDGETCOM_QRCODE_LARGE');
 					if ($lrg.is(':visible')) {
 						$lrg.hide();
 						return;
@@ -232,21 +232,21 @@ var CoinWidgetCom = {
 						src: CoinWidgetCom.source +'qr/?address='+$config.wallet_address
 					}).show();
 				}).bind('mouseleave',function(){
-					$lrg = $(this).parent().find('.COINWIDGETCOM_QRCODE_LARGE');
+					$lrg = jQuery(this).parent().find('.COINWIDGETCOM_QRCODE_LARGE');
 					$lrg.hide();
 				});
 			}
 		} else {
-			if ($(coin_window).is(':visible')) {
+			if (jQuery(coin_window).is(':visible')) {
 				CoinWidgetCom.hide($instance);
 				return;
 			}
 		}
 		CoinWidgetCom.window_position($instance);
-		$(coin_window).show();
-		$pos = $(coin_window).find('input').position();
-		$(coin_window).find('img.COINWIDGET_INPUT_ICON').css({'top':$pos.top+3,'left':$pos.left+3});
-		$(coin_window).find('.COINWIDGETCOM_WALLETURI').css({'top':$pos.top+3,'left':$pos.left+$(coin_window).find('input').outerWidth()+3});
+		jQuery(coin_window).show();
+		$pos = jQuery(coin_window).find('input').position();
+		jQuery(coin_window).find('img.COINWIDGET_INPUT_ICON').css({'top':$pos.top+3,'left':$pos.left+3});
+		jQuery(coin_window).find('.COINWIDGETCOM_WALLETURI').css({'top':$pos.top+3,'left':$pos.left+jQuery(coin_window).find('input').outerWidth()+3});
 		if ($config.counter != 'hide') {
 			$counters = CoinWidgetCom.counter[$instance];
 			if ($counters == null) {
@@ -257,8 +257,8 @@ var CoinWidgetCom = {
 			}
 		 	if ($counters.count == null) $counters.count = 0;
 		 	if ($counters.amount == null) $counters.amount = 0;
-			$(coin_window).find('.COINWIDGETCOM_COUNT').html($counters.count+ '<small>'+$config.lbl_count+'</small>');
-			$(coin_window).find('.COINWIDGETCOM_AMOUNT').html($counters.amount.toFixed($config.decimals)+ '<small>'+$config.lbl_amount+'</small>');
+			jQuery(coin_window).find('.COINWIDGETCOM_COUNT').html($counters.count+ '<small>'+$config.lbl_count+'</small>');
+			jQuery(coin_window).find('.COINWIDGETCOM_AMOUNT').html($counters.amount.toFixed($config.decimals)+ '<small>'+$config.lbl_amount+'</small>');
 		}
 		if (typeof $config.onShow == 'function') 
 			$config.onShow();
@@ -266,7 +266,7 @@ var CoinWidgetCom = {
 	, hide: function($instance) {
 		$config = CoinWidgetCom.config[$instance];
 		coin_window = "#COINWIDGETCOM_WINDOW_"+$instance;
-		$(coin_window).fadeOut();
+		jQuery(coin_window).fadeOut();
 		if (typeof $config.onHide == 'function') {
 			$config.onHide();
 		}
@@ -297,15 +297,15 @@ var CoinWidgetCom = {
 				};
 				x.src = obj.source;
 				x.id  = obj.id;
-				document.lastChild.firstChild.appendChild(x);
+				document.lastChild.appendChild(x);
 			}
 		}
 		, stylesheet_loaded: false
 		, stylesheet: function(){
 			if (!CoinWidgetCom.loader.stylesheet_loaded) {
 				CoinWidgetCom.loader.stylesheet_loaded = true;
-				var $link = $('<link/>');
-				$("head").append($link);
+				var $link = jQuery('<link/>');
+				jQuery("head").append($link);
 				$link.attr({
 					id 		: 'COINWIDGETCOM_STYLESHEET'
 					, rel 	: 'stylesheet'
