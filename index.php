@@ -14,18 +14,7 @@
 
 		$app->group('/v1', function () use ($app) {
 
-			$app->group('/:api', function () use ($app) {
-
-				#currency
-				$app->get('/currency', 'V1:currency');
-
-				#workers
-				$app->get('/workers', 'V1:workers');
-
-				#transactions
-				$app->get('/transactions', 'V1:transactions');
-
-			});
+			$app->get('/:api', 'V1:stat');
 
 		});
 
@@ -44,19 +33,9 @@
 
 	class V1 {
 		
-		#currency
-		function currency($api) {
+		#stat
+		public function stat($api) {
 			echo "im currency";
-		}
-
-		#workers
-		function workers($api) {
-			echo "im workers";
-		}
-
-		#transactions
-		function transactions($api) {
-			echo "im transactions";
 		}
 
 	}
