@@ -31,6 +31,8 @@
 
 	});
 
+	$app->contentType('application/json');
+
 	# lets go
 	$app->run();
 
