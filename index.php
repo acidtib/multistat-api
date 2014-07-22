@@ -30,6 +30,48 @@
 
 	function home() {
 		echo "You shall not pass";
+
+		$es = new Elasticsearch\Client(
+		  array(
+		    'hosts' => array(
+		      '192.241.165.56:9200'
+		    )
+		  )
+		);
+
+		$es->index(
+		  array(
+		    'index' => 'multitat',
+		    'type' => 'user',
+		    'id' => '411639a04849a8a9cd2c3da637f313de5e60203abb94ef8a0e69f6127adb91d6',
+		    'body'  => array(
+		      'aur' => array(
+		      	'confirmed_rewards' => '0.0000000000000000',
+		      	'hashrate' => '0',
+		      	'round_shares' => 'false',
+		      	'block_shares' => '0',
+		      	'estimated_rewards' => '0',
+		      	'payout_history' => '0',
+		      	'pool_hashrate' => '6311'
+		      ),
+		      'btc' => '0.0000468070917350',
+		      'cap'    => '0.0654612854123116'
+		    )
+		  )
+		);
+
+		$doc = $es->get(
+		  array(
+		  	'index' => 'multitat',
+        'type'  => 'user',
+		    'id' => '411639a04849a8a9cd2c3da637f313de5e60203abb94ef8a0e69f6127adb91d6'
+		  )
+		);
+
+		echo "<pre>";
+		var_dump($doc);
+		echo "</pre>";
+
 	}
 
 
