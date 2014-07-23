@@ -16,11 +16,11 @@
 
 		$app->group('/v1', function () use ($app) {
 
-			$app->get('/:api', 'V1:pull');
+			$app->get('/:api', 'V1:stat');
 
 			$app->group('/:api', function () use ($app) {
 
-				$app->get('/stat', 'V1:stat');
+				$app->get('/stat', 'V1:pull');
 			});
 
 		});
@@ -139,6 +139,7 @@
 			//var_dump($result);
 
 			$currency = $result['currency'];
+			$workers = $result['workers'];
 
 			// check if we have something return
 			if ($currency) {
@@ -158,6 +159,21 @@
 						);
 					}
 
+				}
+
+				//ok lets show the active workers
+				foreach ($workers as $worker => $work_d) {
+
+					foreach ($work_d as $work => $hash) {
+						if ($hash['hashrate'] != 0) {
+							$response['workers'][] = array(
+								'coin' => $worker,
+								'worker' => $work, 
+								'hashrate' => $hash['hashrate']
+							);
+						}
+					}
+					
 				}
 
 				#index
