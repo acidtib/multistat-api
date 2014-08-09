@@ -35,16 +35,40 @@
 
 
 	function home() {
-		echo "You shall not pass";
+
+  	$url = 'https://multistat.firebaseio.com/411639a04849a8a9cd2c3da637f313de5e60203abb94ef8a0e69f6127adb91d6.json';
+		$cmd = array("first" => "Dan", "last" => "Vera");
+ 
+		$content = json_encode($cmd);
+
+		$curl = curl_init($url);
+		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+		curl_setopt($curl, CURLOPT_HEADER, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+		$json_response = curl_exec($curl);
+
+		$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+		curl_close($curl);
+
+		$response = json_decode($json_response, true);
+
+		echo "<pre>";
+		var_dump($response);
+		echo "</pre>";
 
 		#connect
-		$es = new Elasticsearch\Client(
-		  array(
-		    'hosts' => array(
-		      '192.241.165.56:9200'
-		    )
-		  )
-		);
+		//$es = new Elasticsearch\Client(
+		//  array(
+		//    'hosts' => array(
+		//      '192.241.165.56:9200'
+		//    )
+		//  )
+		//);
 
 		#index
 		//$params = array();
@@ -68,17 +92,17 @@
     //$es->index($params);
 
     #get
-		$doc = $es->get(
-		  array(
-		  	'index' => 'multitat',
-        'type'  => 'user',
-		    'id' => '411639a04849a8a9cd2c3da637f313de5e60203abb94ef8a0e69f6127adb91d6'
-		  )
-		);
+		//$doc = $es->get(
+		//  array(
+		//  	'index' => 'multitat',
+    //    'type'  => 'user',
+		//    'id' => '411639a04849a8a9cd2c3da637f313de5e60203abb94ef8a0e69f6127adb91d6'
+		//  )
+		//);
 
-		echo "<pre>";
-		var_dump($doc);
-		echo "</pre>";
+		//echo "<pre>";
+		//var_dump($doc);
+		//echo "</pre>";
 
 	}
 
@@ -175,25 +199,47 @@
 					
 				}
 
-				#index
-				$params = array();
-		    $params['body']  = $response;
-		    $params['index'] = 'multitat';
-		    $params['type']  = 'user';
-		    $params['id']    = $api;
-		    $es->index($params);
+				$url = 'https://multistat.firebaseio.com/'.$api.'.json';
+		 
+				$content = json_encode($response);
+
+				$curl = curl_init($url);
+				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+				curl_setopt($curl, CURLOPT_HEADER, false);
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
+				curl_setopt($curl, CURLOPT_POST, true);
+				curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+				$json_response = curl_exec($curl);
+
+				$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+				curl_close($curl);
+
+				$response = json_decode($json_response, true);
+
+				var_dump($response);
+
+				//#index
+				//$params = array();
+		    //$params['body']  = $response;
+		    //$params['index'] = 'multitat';
+		    //$params['type']  = 'user';
+		    //$params['id']    = $api;
+		    //$es->index($params);
 
 				
-				#get
-				$stat = $es->get(
-				  array(
-				  	'index' => 'multitat',
-		        'type'  => 'user',
-				    'id' => $api
-				  )
-				);
+				//#get
+				//$stat = $es->get(
+				//  array(
+				//  	'index' => 'multitat',
+		    //    'type'  => 'user',
+				//    'id' => $api
+				//  )
+				//);
 
-				echo json_encode($stat);
+				//echo json_encode($stat);
 
 			} else { // panic
 

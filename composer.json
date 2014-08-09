@@ -1,6 +1,7 @@
 {
   "require": {
     "slim/slim": "2.*",
-    "elasticsearch/elasticsearch": "~1.0"
+    "elasticsearch/elasticsearch": "~1.0",
+    "ktamas77/firebase-php": "dev-master"
   }
 }
