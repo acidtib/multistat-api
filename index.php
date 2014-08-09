@@ -21,6 +21,7 @@
 			$app->group('/:api', function () use ($app) {
 
 				$app->get('/stat', 'V1:pull');
+
 			});
 
 		});
@@ -135,8 +136,6 @@
 			$context  = stream_context_create($options);
 			$result = file_get_contents($url, false, $context);
 			$result = json_decode($result, true);
-
-			//var_dump($result);
 
 			$currency = $result['currency'];
 			$workers = $result['workers'];
