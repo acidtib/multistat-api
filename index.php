@@ -28,7 +28,7 @@
 
 	});
 
-	$app->contentType('application/json');
+	//$app->contentType('application/json');
 
 	# lets go
 	$app->run();
@@ -36,73 +36,6 @@
 
 	function home() {
 
-  	$url = 'https://multistat.firebaseio.com/411639a04849a8a9cd2c3da637f313de5e60203abb94ef8a0e69f6127adb91d6.json';
-		$cmd = array("first" => "Dan", "last" => "Vera");
- 
-		$content = json_encode($cmd);
-
-		$curl = curl_init($url);
-		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-		curl_setopt($curl, CURLOPT_HEADER, false);
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
-		curl_setopt($curl, CURLOPT_POST, true);
-		curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-		$json_response = curl_exec($curl);
-
-		$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-		curl_close($curl);
-
-		$response = json_decode($json_response, true);
-
-		echo "<pre>";
-		var_dump($response);
-		echo "</pre>";
-
-		#connect
-		//$es = new Elasticsearch\Client(
-		//  array(
-		//    'hosts' => array(
-		//      '192.241.165.56:9200'
-		//    )
-		//  )
-		//);
-
-		#index
-		//$params = array();
-    //$params['body']  = array(
-    //		'testField' => 'abc',
-    //		'currency' => array(
-		//      array(
-		//      	'aur' => array(
-		//      		'confirmed_rewards' => '0.000'
-		//      	),
-		//      	'btc' => array(
-		//      		'confirmed_rewards' => '0.000'
-		//      	)
-		//      ),
-		//      array('popularity' => array('order' => 'desc'))
-		//    )
-    //	);
-    //$params['index'] = 'multitat';
-    //$params['type']  = 'user';
-    //$params['id']    = '411639a04849a8a9cd2c3da637f313de5e60203abb94ef8a0e69f6127adb91d6';
-    //$es->index($params);
-
-    #get
-		//$doc = $es->get(
-		//  array(
-		//  	'index' => 'multitat',
-    //    'type'  => 'user',
-		//    'id' => '411639a04849a8a9cd2c3da637f313de5e60203abb94ef8a0e69f6127adb91d6'
-		//  )
-		//);
-
-		//echo "<pre>";
-		//var_dump($doc);
-		//echo "</pre>";
 
 	}
 
@@ -136,15 +69,8 @@
 		#pull
 		public function pull($api) {
 
-			#connect
-			$es = new Elasticsearch\Client(
-			  array(
-			    'hosts' => array(
-			      '192.241.165.56:9200'
-			    )
-			  )
-			);
-			
+			include ('lib/functions.php');
+
 			$url = 'http://api.multipool.us/api.php?api_key='.$api.'';
 			$cmd = array();
 			$data = array('json' => json_encode($cmd));
@@ -194,12 +120,50 @@
 								'worker' => $work, 
 								'hashrate' => $hash['hashrate']
 							);
+
+							$active[] = array(
+								'coin' => $worker, 
+								'type' => what_is_it($worker)
+							);
 						}
 					}
 					
 				}
 
-				$url = 'https://multistat.firebaseio.com/'.$api.'.json';
+				$active = array_map("unserialize", array_unique(array_map("serialize", $active)));
+
+				if (false !== ($scrypt = array_search2d('scrypt', $active))) {
+				    $scrypt = $active[$scrypt]['coin'];
+				} else {
+				    $scrypt = 'n/a';
+				}
+
+				if (false !== ($scrypt_n = array_search2d('scrypt-n', $active))) {
+				    $scrypt_n = $active[$scrypt_n]['coin'];
+				} else {
+				    $scrypt_n = 'n/a';
+				}
+
+				if (false !== ($sha_256 = array_search2d('sha-256', $active))) {
+				    $sha_256 = $active[$sha_256]['coin'];
+				} else {
+				    $sha_256 = 'n/a';
+				}
+
+				if (false !== ($x11 = array_search2d('x11', $active))) {
+				    $x11 = $active[$x11]['coin'];
+				} else {
+				    $x11 = 'n/a';
+				}
+
+				$response['mining'] = array(
+					'scrypt' => $scrypt,
+					'scrypt_n' => $scrypt_n,
+					'sha_256' => $sha_256,
+					'x11' => $x11
+				);
+
+				$url = 'https://multistat.firebaseio.com/users/'.$api.'.json';
 		 
 				$content = json_encode($response);
 
@@ -219,35 +183,21 @@
 
 				$response = json_decode($json_response, true);
 
-				var_dump($response);
-
-				//#index
-				//$params = array();
-		    //$params['body']  = $response;
-		    //$params['index'] = 'multitat';
-		    //$params['type']  = 'user';
-		    //$params['id']    = $api;
-		    //$es->index($params);
-
 				
-				//#get
-				//$stat = $es->get(
-				//  array(
-				//  	'index' => 'multitat',
-		    //    'type'  => 'user',
-				//    'id' => $api
-				//  )
-				//);
+				$call_response['response'] = array(
+					'status' => '200'
+				);
 
-				//echo json_encode($stat);
 
 			} else { // panic
 
-				$response['response'] = array(
+				$call_response['response'] = array(
 					'status' => '500'
 				);
 
 			}
+
+			echo json_encode($call_response);
 
 		}
 
