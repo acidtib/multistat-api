@@ -16,11 +16,11 @@
 
     $app->group('/v1', function () use ($app) {
 
-      $app->get('/:api', 'V1:stat');
-
       $app->group('/:api', function () use ($app) {
 
-        $app->get('/stat', 'V1:pull');
+        $app->get('/stat', 'V1:stat');
+
+        $app->get('/pull', 'V1:pull');
 
       });
 
@@ -35,7 +35,7 @@
 
 
   function home() {
-
+    echo "Hello";
   }
 
 
@@ -44,24 +44,7 @@
     #stat
     public function stat($api) {
 
-      #connect
-      $es = new Elasticsearch\Client(
-        array(
-          'hosts' => array(
-            '192.241.165.56:9200'
-          )
-        )
-      );
-
-      $stat = $es->get(
-        array(
-        	'index' => 'multitat',
-          'type'  => 'user',
-          'id' => $api
-        )
-      );
-
-      echo json_encode($stat);
+      echo "Hello";
 
     }
 
@@ -129,7 +112,11 @@
 
         }
 
-        $active = array_map("unserialize", array_unique(array_map("serialize", $active)));
+        if ($active) {
+          $active = array_map("unserialize", array_unique(array_map("serialize", $active)));
+        } else {
+          $active = false;
+        }
 
         if (false !== ($scrypt = array_search2d('scrypt', $active))) {
             $scrypt = $active[$scrypt]['coin'];
